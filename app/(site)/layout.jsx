@@ -63,4 +63,4 @@ export default function RootLayout({ children }) {
     </html>
   )
 }
-export const revalidate = 10;
+export const revalidate = 10

@@ -67,7 +67,7 @@ function Navbar() {
           {routes.map((route) => (
             <li key={route.label}>
               <Link
-                className='nav-link'
+                className='nav-link font-extralight text-sm'
                 href={route.route}
                 target={route.external ? '_blank' : '_self'}>
                 {route.label}
@@ -84,7 +84,7 @@ function Navbar() {
 
       {/* Mobile menu */}
       <div
-        className={`fixed top-0 right-0 bg-white text-black h-screen w-5/6 px-4 py-6 transition-transform z-40 shadow-2xl ${
+        className={`md:hidden fixed top-0 right-0 bg-white text-black h-screen px-4 py-6 transition-transform z-40 shadow-2xl w-5/6 ${
           !isOpen ? 'translate-x-full' : ''
         }`}>
         {/* Mobile toggle close */}
@@ -99,7 +99,7 @@ function Navbar() {
             alt='close menu'
           />
         </button>
-        <ul className='flex flex-col p-6'>
+        <ul className='flex flex-col p-6 md:hidden'>
           {routes.map((route) => (
             <li
               key={route.label}
