@@ -1,5 +1,8 @@
 import Image from 'next/image'
 import Link from 'next/link'
+import { FaInstagram } from 'react-icons/fa'
+import { FaGithub } from 'react-icons/fa'
+import { FaLinkedin } from 'react-icons/fa6'
 
 /**
  * Footer component that renders the footer section of the website.
@@ -12,19 +15,26 @@ import Link from 'next/link'
  *
  * @returns {JSX.Element} The rendered footer section.
  */
+
+const copyRightContents =
+  '© 2024 Association of Computer Engineering Students, DIT. All rights reserved.'
+
 const Footer = () => {
   const socials = [
     {
       display: 'Instagram',
       link: 'https://www.instagram.com/aces.dit/',
+      icon: <FaInstagram />,
     },
     {
       display: 'LinkedIn',
       link: 'https://www.linkedin.com/company/acesdit/',
+      icon: <FaLinkedin />,
     },
     {
       display: 'GitHub',
       link: 'https://github.com/acesdit',
+      icon: <FaGithub />,
     },
   ]
 
@@ -44,67 +54,59 @@ const Footer = () => {
   ]
 
   return (
-    <footer className='bg-[#2C2C2C]'>
-      <div className='container mx-auto md:flex-row flex flex-col justify-center items-center md:items-start px-4 py-12 md:px-6'>
-        <div className='md:w-2/4 flex flex-col md:flex-row'>
-          <div className='flex justify-center items-center md:pr-12'>
-            <Image
-              src='/acesLogo(Black).svg'
-              height={124}
-              width={124}
-              alt='ACES Logo'
-            />
-          </div>
-          <div className=''>
-            <h3 className='text-3xl font-title font-medium uppercase  text-white leading-normal pb-2 text-center md:text-left'>
-              Association of Computer <br /> Engineering Students
-            </h3>
-            <p className='text-white text-base text-center md:text-left'>
-              <Link
-                className='transition-colors hover:text-secondary'
-                href='https://engg.dypvp.edu.in/'
-                target='_blank'>
-                Dr. D.Y. Patil Institute of Technology, <br /> Pimpri
-              </Link>
-            </p>
-          </div>
-        </div>
-        <div className='md:w-1/4 flex flex-col'>
-          <h4 className='text-white font-bold tracking-wide mb-1 text-lg uppercase text-center pb-3 md:text-left mt-6 md:mt-0'>
-            Socials
-          </h4>
-          {socials.map((social) => (
-            <Link
-              key={social.display}
-              className='text-white font-light text-lg text-center pb-2 md:text-left transition-colors hover:text-secondary'
-              href={social.link}>
-              {social.display}
-            </Link>
-          ))}
-        </div>
-        <div className='md:w-1/4 flex flex-col'>
-          <h4 className='text-white font-bold tracking-wide mb-1 text-lg uppercase text-center pb-3 md:text-left mt-6 md:mt-0'>
-            Other Links
-          </h4>
-          {others.map((other) => (
-            <Link
-              key={other.display}
-              className='text-white font-light text-lg text-center pb-2 md:text-left transition-colors hover:text-secondary'
-              href={other.link}>
-              {other.display}
-            </Link>
-          ))}
-        </div>
-      </div>
-
-      {/* Copyright */}
-      <div className='flex bg-black justify-center items-center py-3'>
-        <p className='text-white text-sm text-center leading-relaxed'>
-          © 2024 Association of Computer Engineering Students, DIT. All rights
-          reserved.
+    // Main Div representing footer
+    // It contains 3 nested divs inside it
+    <div className='flex flex-col bg-[#2c2c2c] pt-10'>
+      {/* First Div represents brand image, name and links. */}
+      <div className='left-part flex flex-col items-center w-fit mx-auto'>
+        <Image
+          src='/acesLogo(Black).svg'
+          height={124}
+          width={124}
+          alt='ACES Logo'
+        />
+        <h3 className='text-3xl font-title font-medium uppercase  text-white leading-normal pb-2 text-center'>
+          Association of Computer Engineering Students
+        </h3>
+        <p className='text-white uppercase text-xs text-center md:text-left'>
+          <Link
+            className='transition-colors hover:text-secondary'
+            href='https://engg.dypvp.edu.in/'
+            target='_blank'>
+            Dr. D.Y. Patil Institute of Technology, Pimpri
+          </Link>
         </p>
       </div>
-    </footer>
+      {/* Second Div showing all the social links */}
+      <div className='social-icons-container flex flex-row gap-5 mt-4 w-fit mx-auto'>
+        {socials.map((social) => (
+          <Link
+            key={social.display}
+            className='text-xl hover:text-white transition-all text-gray-400'
+            href={social.link}>
+            {social.icon}
+          </Link>
+        ))}
+      </div>
+      {/* Horizontal Line to make UI much better and organizable */}
+      <hr className='h-px my-4 bg-gray-200 border-0 dark:bg-gray-700' />
+
+      {/* Third Div showing other links */}
+      <div className='social-icons-container flex flex-row justify-center gap-10 mb-2'>
+        {others.map((other) => (
+          <Link
+            key={other.display}
+            className='text-xs transition-all hover:text-white uppercase text-gray-400'
+            href={other.link}>
+            {other.display}
+          </Link>
+        ))}
+      </div>
+      {/* Copyright Contents */}
+      <p className='text-gray-400 bg-[#1a1a1a] p-4 mt-2 text-xs text-center leading-relaxed'>
+        {copyRightContents}
+      </p>
+    </div>
   )
 }
 
