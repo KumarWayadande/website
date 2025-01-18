@@ -1,6 +1,8 @@
 'use client'
 import Image from 'next/image'
 import Link from 'next/link'
+import { RxHamburgerMenu } from 'react-icons/rx'
+import { MdCloseFullscreen } from 'react-icons/md'
 import { usePathname } from 'next/navigation'
 import { useEffect, useState } from 'react'
 import NavOpenSvg from './NavOpenSvg'
@@ -56,7 +58,7 @@ function Navbar() {
 
   return (
     <nav className='w-full fixed top-0 z-20 text-white transition-colors nav-middle'>
-      <div className='container mx-auto flex justify-between items-center p-4 md:p-6'>
+      <div className='container mx-auto flex justify-between align-middle items-center p-4 md:p-6'>
         {/* Logo */}
         <Link href='/' className='h-[30px]'>
           <LogoText />
@@ -78,7 +80,8 @@ function Navbar() {
 
         {/* Mobile toggle open */}
         <button className='md:hidden inline' onClick={() => setIsOpen(true)}>
-          <NavOpenSvg />
+          {/* <NavOpenSvg /> */}
+          <RxHamburgerMenu className='text-2xl' />
         </button>
       </div>
 
@@ -91,13 +94,14 @@ function Navbar() {
         <button
           className='md:hidden block ml-auto'
           onClick={() => setIsOpen(false)}>
-          <Image
+          {/* <Image
             className='ml-auto'
             height={20}
             width={20}
             src='/nav-close.svg'
             alt='close menu'
-          />
+          /> */}
+          <MdCloseFullscreen className='text-xl' />
         </button>
         <ul className='flex flex-col p-6 md:hidden'>
           {routes.map((route) => (
