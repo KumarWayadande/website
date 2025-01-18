@@ -94,20 +94,13 @@ function Navbar() {
         <button
           className='md:hidden block ml-auto'
           onClick={() => setIsOpen(false)}>
-          {/* <Image
-            className='ml-auto'
-            height={20}
-            width={20}
-            src='/nav-close.svg'
-            alt='close menu'
-          /> */}
           <MdCloseFullscreen className='text-xl' />
         </button>
         <ul className='flex flex-col p-6 md:hidden'>
           {routes.map((route) => (
             <li
               key={route.label}
-              className='p-4 mt-8 uppercase text-base font-semibold'>
+              className='p-4 mt-8 uppercase text-base font-extralight'>
               <Link
                 href={route.route}
                 target={route.external ? '_blank' : '_self'}>
